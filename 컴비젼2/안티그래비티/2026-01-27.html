@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 1월 27일 - 특별한 하루</title>
+    <meta name="description" content="2026년 1월 27일을 위한 세련된 디지털 대시보드">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --accent: #f43f5e;
+            --bg-dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(15, 23, 42, 0.8) 100%);
+            z-index: -1;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1200px;
+            padding: 4rem 2rem;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .date-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .quote-card {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .quote-card {
+                grid-column: span 1;
+            }
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .time {
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 70px;
+        }
+
+        .event {
+            color: var(--text-main);
+        }
+
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .temp {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        .weather-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stagger-1 { animation-delay: 0.2s; }
+        .stagger-2 { animation-delay: 0.4s; }
+        .stagger-3 { animation-delay: 0.6s; }
+        .stagger-4 { animation-delay: 0.8s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--glass-border);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <main>
+        <header>
+            <div class="date-badge">Tuesday, January 27, 2026</div>
+            <h1>2026. 01. 27</h1>
+            <p class="subtitle">미래의 오늘, 당신의 새로운 시작을 응원합니다. 세련된 디자인과 함께 하루를 계획해보세요.</p>
+        </header>
+
+        <div class="grid">
+            <!-- Quote Card -->
+            <div class="card quote-card stagger-1">
+                <div class="card-icon">
+                    <i data-lucide="quote"></i>
+                </div>
+                <p class="quote-text">"미래를 예측하는 가장 좋은 방법은 미래를 창조하는 것이다."</p>
+                <p class="quote-author">— 피터 드러커</p>
+            </div>
+
+            <!-- Weather Card -->
+            <div class="card stagger-2">
+                <div class="card-icon">
+                    <i data-lucide="cloud-sun"></i>
+                </div>
+                <h2>오늘의 날씨</h2>
+                <div class="weather-info">
+                    <div class="temp">-2°C</div>
+                    <div class="weather-details">
+                        <span style="color: #fff; font-weight: 600;">맑음</span>
+                        <span>서울, 대한민국</span>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem;">상쾌한 겨울 아침입니다. 따뜻하게 입고 외출하세요.</p>
+            </div>
+
+            <!-- Schedule Card -->
+            <div class="card stagger-3">
+                <div class="card-icon">
+                    <i data-lucide="calendar"></i>
+                </div>
+                <h2>주요 일정</h2>
+                <div class="schedule-list">
+                    <div class="schedule-item">
+                        <span class="time">09:00</span>
+                        <span class="event">주간 전략 회의</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">12:30</span>
+                        <span class="event">팀 런치 (이탈리안)</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">15:00</span>
+                        <span class="event">신규 프로젝트 브리핑</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Focus Card -->
+            <div class="card stagger-4">
+                <div class="card-icon">
+                    <i data-lucide="target"></i>
+                </div>
+                <h2>오늘의 목표</h2>
+                <p>• 디자인 시스템 가이드라인 완성</p>
+                <p>• 운동 30분 (스트레칭 포함)</p>
+                <p>• 독서 20페이지</p>
+                <div style="margin-top: 1.5rem; height: 6px; background: var(--glass-border); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 65%; height: 100%; background: linear-gradient(to right, var(--primary), var(--secondary));"></div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; text-align: right;">진행률 65%</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Antigravity Design. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Add some dynamic interaction
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>

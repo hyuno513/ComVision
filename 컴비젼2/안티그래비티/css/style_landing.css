@@ -1,0 +1,524 @@
+@import url('style.css');
+
+:root {
+    --re-primary: #10b981;
+    /* Emerald 500 */
+    --re-primary-dark: #059669;
+    /* Emerald 600 */
+    --re-secondary: #eab308;
+    /* Yellow 500 */
+    --re-gray: #64748b;
+    /* Slate 500 */
+    --re-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --re-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --re-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Override */
+header.re-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: var(--re-shadow-sm);
+}
+
+.re-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--re-primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.re-nav-menu {
+    position: static;
+    width: auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.re-nav-link {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.re-nav-link:hover {
+    color: var(--re-primary);
+}
+
+.re-btn-login {
+    padding: 0.5rem 1.5rem;
+    background: var(--dark);
+    color: white;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.re-btn-login:hover {
+    background: var(--re-primary);
+    transform: translateY(-2px);
+}
+
+/* New Split Hero Section */
+.re-hero {
+    height: 100vh;
+    display: flex;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    margin-top: 80px;
+    /* Header overlaps */
+}
+
+.re-hero-left {
+    width: 40%;
+    padding: 100px 5% 50px 5%;
+    /* Top padding for header */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+    z-index: 2;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+}
+
+.re-hero-left h1 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: var(--dark);
+}
+
+.re-hero-left h1 span {
+    color: var(--re-primary);
+}
+
+.re-hero-left p {
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    color: var(--re-gray);
+    line-height: 1.6;
+}
+
+.re-search-box {
+    background: white;
+    border: 2px solid #f1f5f9;
+    padding: 0.5rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 0.5rem;
+    box-shadow: var(--re-shadow-md);
+    transition: border-color 0.3s;
+}
+
+.re-search-box:focus-within {
+    border-color: var(--re-primary);
+}
+
+.re-search-input {
+    flex: 1;
+    border: none;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    outline: none;
+    background: transparent;
+}
+
+.re-btn-search {
+    background: var(--re-primary);
+    color: white;
+    border: none;
+    padding: 0 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.re-btn-search:hover {
+    background: var(--re-primary-dark);
+}
+
+/* Map Container in Hero - Now Full Height/Width of Right Side */
+#map-container {
+    width: 60%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.map-overlay-card {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: var(--re-shadow-lg);
+    z-index: 1000;
+    max-width: 300px;
+    border-left: 5px solid var(--re-primary);
+}
+
+.map-overlay-card h4 {
+    margin: 0 0 5px 0;
+    color: var(--dark);
+}
+
+.map-overlay-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--re-gray);
+}
+
+/* Stats Section adjusted for new layout */
+.re-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 4rem 5%;
+    background: white;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    /* Removed negative top margin */
+    border-radius: 20px;
+}
+
+.re-stat-item h3 {
+    font-size: 2.5rem;
+    color: var(--re-primary);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.re-stat-item p {
+    color: var(--re-gray);
+    font-weight: 600;
+}
+
+/* Community Section */
+.re-section {
+    padding: 5rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.re-section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.re-grid-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.re-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--re-shadow-md);
+    transition: all 0.3s;
+    border: 1px solid #f1f5f9;
+}
+
+.re-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--re-shadow-lg);
+}
+
+.re-card-img {
+    height: 200px;
+    background: #e2e8f0;
+    object-fit: cover;
+    width: 100%;
+}
+
+.re-card-body {
+    padding: 1.5rem;
+}
+
+.re-card-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #ecfdf5;
+    color: var(--re-primary-dark);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.re-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.re-card-text {
+    color: var(--re-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.re-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+/* Features */
+.re-features {
+    background: #f0f9ff;
+    border-radius: 30px;
+    margin: 5rem 5%;
+    padding: 5rem;
+    text-align: center;
+}
+
+.re-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.re-feature-icon {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--re-primary);
+    box-shadow: var(--re-shadow-md);
+}
+
+/* Footer (Re-use existing structure but styled) */
+.re-footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.re-footer-col h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.re-footer-links a {
+    display: block;
+    color: #94a3b8;
+    text-decoration: none;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s;
+}
+
+.re-footer-links a:hover {
+    color: white;
+}
+
+@media (max-width: 900px) {
+    .re-hero {
+        flex-direction: column-reverse;
+        /* Map on top or bottom? Let's keep Map on top for mobile app feel, or bottom for content first.  User wants map to be big. */
+        height: auto;
+        padding-top: 70px;
+    }
+
+    .re-hero-left {
+        width: 100%;
+        padding: 40px 5%;
+        box-shadow: none;
+    }
+
+    #map-container {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .re-stats {
+        grid-template-columns: 1fr;
+        margin: 2rem 5%;
+        padding: 2rem;
+    }
+
+    .re-nav-menu {
+        display: none;
+    }
+}
+
+/* Login Page Specific Styles */
+.login-body {
+    background: url('../login_bg_city.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 3rem;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.login-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.login-header h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.login-header p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.login-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.login-input:focus {
+    background: white;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+}
+
+.login-btn {
+    background: var(--re-primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.login-btn:hover {
+    background: var(--re-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.login-footer a {
+    color: var(--re-primary);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

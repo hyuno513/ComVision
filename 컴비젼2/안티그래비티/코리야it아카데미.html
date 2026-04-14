@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코리아 IT 아카데미 - 로그인</title>
+    <meta name="description" content="코리아 IT 아카데미 수강생 및 일반회원 로그인 페이지">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #003d80;
+            --accent-color: #ff4d4d;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-gray: #f4f7f9;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background-image: url('login_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 450px;
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-section h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo-section p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .tab-menu {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-item.active {
+            color: var(--primary-color);
+        }
+
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            width: 18px;
+            height: 18px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 1.5px solid #e1e1e1;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            cursor: pointer;
+        }
+
+        .find-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .find-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-section {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .signup-section a {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .signup-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Social Login */
+        .social-login {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .social-login p {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .social-btn:hover {
+            background: #f8f9fa;
+        }
+
+        .social-btn.kakao {
+            background: #FEE500;
+            border: none;
+        }
+
+        .social-btn.naver {
+            background: #03C75A;
+            border: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="logo-section">
+            <h1>KOREA IT ACADEMY</h1>
+            <p>미래를 설계하는 IT 교육의 중심</p>
+        </div>
+
+        <div class="tab-menu">
+            <div class="tab-item active" onclick="selectTab(this)">수강생</div>
+            <div class="tab-item" onclick="selectTab(this)">일반회원</div>
+        </div>
+
+        <form onsubmit="return false;">
+            <div class="input-group">
+                <i data-lucide="user"></i>
+                <input type="text" placeholder="아이디를 입력하세요" required>
+            </div>
+            <div class="input-group">
+                <i data-lucide="lock"></i>
+                <input type="password" placeholder="비밀번호를 입력하세요" required>
+            </div>
+
+            <div class="options">
+                <label class="remember-me">
+                    <input type="checkbox"> 아이디 저장
+                </label>
+                <div class="find-links">
+                    <a href="#">아이디/비밀번호 찾기</a>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn">로그인</button>
+        </form>
+
+        <div class="signup-section">
+            아직 회원이 아니신가요? <a href="#">회원가입</a>
+        </div>
+
+        <div class="social-login">
+            <p>간편 로그인</p>
+            <div class="social-icons">
+                <div class="social-btn kakao">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" width="20"
+                        alt="Kakao">
+                </div>
+                <div class="social-btn naver">
+                    <span style="font-weight: 900; font-size: 18px;">N</span>
+                </div>
+                <div class="social-btn">
+                    <i data-lucide="mail" style="width: 20px; color: #666;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        function selectTab(element) {
+            document.querySelectorAll('.tab-item').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

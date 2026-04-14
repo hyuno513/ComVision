@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이웃들의 찐 이야기 - 아파트/오피스텔/빌라 커뮤니티</title>
+    <meta name="description" content="우리 동네 실제 거주민들의 생생한 이야기를 만나보세요. 아파트, 오피스텔, 빌라 실거주 리뷰 플랫폼">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style_landing.css">
+</head>
+
+<body>
+    <header class="re-header">
+        <a href="#" class="re-logo">
+            <i data-lucide="home"></i>
+            <span>NeighborHood</span>
+        </a>
+        <nav class="re-nav-menu">
+            <a href="#" class="re-nav-link">커뮤니티</a>
+            <a href="#" class="re-nav-link">실거주 리뷰</a>
+            <a href="#" class="re-nav-link">부동산 뉴스</a>
+            <a href="#" class="re-nav-link">이벤트</a>
+        </nav>
+        <a href="로그인.html" class="re-btn-login">로그인 / 회원가입</a>
+    </header>
+
+    <section class="re-hero">
+        <!-- Left Side: Content -->
+        <div class="re-hero-left">
+            <h1>당신의 이웃은<br><span>누구인가요?</span></h1>
+            <p>실제 거주민들이 공유하는 찐 동네 이야기.<br>
+                광고 없는 깨끗한 리뷰와 커뮤니티를 만나보세요.</p>
+
+            <div class="re-search-box">
+                <input type="text" class="re-search-input" placeholder="관심있는 지역이나 단지명을 입력하세요...">
+                <button class="re-btn-search">검색</button>
+            </div>
+
+            <div
+                style="margin-top: 2rem; display: flex; gap: 1rem; align-items: center; color: var(--re-gray); font-size: 0.9rem;">
+                <i data-lucide="trending-up" style="width: 16px;"></i>
+                <span>인기 검색: 송파 헬리오시티, 반포 래미안, 판교 푸르지오</span>
+            </div>
+        </div>
+
+        <!-- Right Side: Large Map -->
+        <div id="map-container">
+            <div id="map"></div>
+            <!-- Overlay Card inside Map -->
+            <div class="map-overlay-card">
+                <h4>📍 내 주변 인기 단지</h4>
+                <p>현재 위치를 기반으로 사람들이 가장 많이 이야기하는 단지를 표시하고 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Floating Section -->
+    <div class="re-stats">
+        <div class="re-stat-item">
+            <h3>12,450+</h3>
+            <p>누적 실거주 리뷰</p>
+        </div>
+        <div class="re-stat-item">
+            <h3>850+</h3>
+            <p>활성 커뮤니티</p>
+        </div>
+        <div class="re-stat-item">
+            <h3>98%</h3>
+            <p>사용자 만족도</p>
+        </div>
+    </div>
+
+    <section class="re-section">
+        <div class="re-section-title">
+            <h2>🔥 실시간 인기 이야기</h2>
+            <a href="#" style="color:var(--re-primary); text-decoration:none; font-size:1rem;">더보기 ></a>
+        </div>
+        <div class="re-grid-card">
+            <div class="re-card">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Apartment" class="re-card-img">
+                <div class="re-card-body">
+                    <span class="re-card-tag">서울 강남구</span>
+                    <h3 class="re-card-title">도곡동 래미안 실거주 3년차 후기</h3>
+                    <p class="re-card-text">학군과 교통은 정말 최고입니다. 다만 주차 문제가 조금 있는데...</p>
+                    <div class="re-card-footer">
+                        <span><i data-lucide="message-square" style="width:14px;"></i> 24</span>
+                        <span>10분 전</span>
+                    </div>
+                </div>
+            </div>
+            <div class="re-card">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Officetel" class="re-card-img">
+                <div class="re-card-body">
+                    <span class="re-card-tag">경기 분당</span>
+                    <h3 class="re-card-title">정자동 오피스텔 1인 가구 추천</h3>
+                    <p class="re-card-text">관리비가 생각보다 많이 나오지 않아요. 보안도 철저하고...</p>
+                    <div class="re-card-footer">
+                        <span><i data-lucide="message-square" style="width:14px;"></i> 18</span>
+                        <span>32분 전</span>
+                    </div>
+                </div>
+            </div>
+            <div class="re-card">
+                <img src="https://images.unsplash.com/photo-1600596542815-2a429feb00f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Villa" class="re-card-img">
+                <div class="re-card-body">
+                    <span class="re-card-tag">인천 송도</span>
+                    <h3 class="re-card-title">송도 신축 빌라 매매 고민입니다</h3>
+                    <p class="re-card-text">주변 인프라가 아직 부족한 것 같은데 향후 가치가 어떨까요?</p>
+                    <div class="re-card-footer">
+                        <span><i data-lucide="message-square" style="width:14px;"></i> 45</span>
+                        <span>1시간 전</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="re-features">
+        <div class="re-section-title" style="justify-content: center;">
+            <h2>왜 NeighborHood 인가요?</h2>
+        </div>
+        <div class="re-feature-grid">
+            <div class="feature-item">
+                <div class="re-feature-icon"><i data-lucide="shield-check" size="32"></i></div>
+                <h3>인증된 입주민</h3>
+                <p>등기부등본 및 관리비 고지서 인증을 통해 실제 입주민만 리뷰를 작성할 수 있습니다.</p>
+            </div>
+            <div class="feature-item">
+                <div class="re-feature-icon"><i data-lucide="map-pin" size="32"></i></div>
+                <h3>동네별 커뮤니티</h3>
+                <p>우리 동네 사람들만 아는 맛집, 병원, 학원 정보를 공유하세요.</p>
+            </div>
+            <div class="feature-item">
+                <div class="re-feature-icon"><i data-lucide="trending-up" size="32"></i></div>
+                <h3>실시간 시세 정보</h3>
+                <p>국토부 실거래가 데이터를 기반으로 정확한 시세 흐름을 파악할 수 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="re-section">
+        <div class="re-section-title">
+            <h2>🏠 핫한 주거 단지</h2>
+        </div>
+        <div class="re-grid-card" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+            <div class="re-card" style="border-radius: 15px;">
+                <div
+                    style="height: 150px; background: #cbd5e1; display:flex; align-items:center; justify-content:center; color:#64748b;">
+                    이미지 준비중</div>
+                <div class="re-card-body">
+                    <h4 style="margin-bottom:5px;">서울숲 아크로포레스트</h4>
+                    <p style="font-size:0.9rem; color:var(--re-gray);">서울 성동구 성수동</p>
+                </div>
+            </div>
+            <div class="re-card" style="border-radius: 15px;">
+                <div
+                    style="height: 150px; background: #cbd5e1; display:flex; align-items:center; justify-content:center; color:#64748b;">
+                    이미지 준비중</div>
+                <div class="re-card-body">
+                    <h4 style="margin-bottom:5px;">반포 자이</h4>
+                    <p style="font-size:0.9rem; color:var(--re-gray);">서울 서초구 반포동</p>
+                </div>
+            </div>
+            <div class="re-card" style="border-radius: 15px;">
+                <div
+                    style="height: 150px; background: #cbd5e1; display:flex; align-items:center; justify-content:center; color:#64748b;">
+                    이미지 준비중</div>
+                <div class="re-card-body">
+                    <h4 style="margin-bottom:5px;">해운대 엘시티</h4>
+                    <p style="font-size:0.9rem; color:var(--re-gray);">부산 해운대구 중동</p>
+                </div>
+            </div>
+            <div class="re-card" style="border-radius: 15px;">
+                <div
+                    style="height: 150px; background: #cbd5e1; display:flex; align-items:center; justify-content:center; color:#64748b;">
+                    이미지 준비중</div>
+                <div class="re-card-body">
+                    <h4 style="margin-bottom:5px;">판교 푸르지오</h4>
+                    <p style="font-size:0.9rem; color:var(--re-gray);">경기 성남시 분당구</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="re-footer-content">
+            <div class="re-footer-col" style="flex: 2;">
+                <h3 style="margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="home"></i>
+                    NeighborHood</h3>
+                <p style="color:#94a3b8; line-height:1.6;">
+                    이웃들의 생생한 주거 이야기를 담는 플랫폼.<br>
+                    더 나은 주거 문화를 만들어갑니다.
+                </p>
+            </div>
+            <div class="re-footer-col">
+                <h4>서비스</h4>
+                <div class="re-footer-links">
+                    <a href="#">아파트 리뷰</a>
+                    <a href="#">오피스텔 리뷰</a>
+                    <a href="#">빌라 리뷰</a>
+                    <a href="#">동네 질문</a>
+                </div>
+            </div>
+            <div class="re-footer-col">
+                <h4>고객지원</h4>
+                <div class="re-footer-links">
+                    <a href="#">공지사항</a>
+                    <a href="#">자주 묻는 질문</a>
+                    <a href="#">문의하기</a>
+                    <a href="#">제휴 문의</a>
+                </div>
+            </div>
+        </div>
+        <div
+            style="border-top:1px solid #334155; margin-top:3rem; padding-top:2rem; text-align:center; color:#64748b; font-size:0.9rem;">
+            &copy; 2026 NeighborHood Corp. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        lucide.createIcons();
+
+        // Custom marker icon
+        var houseIcon = L.icon({
+            iconUrl: 'https://cdn-icons-png.flaticon.com/512/25/25694.png',
+            iconSize: [30, 30],
+            iconAnchor: [15, 30],
+            popupAnchor: [0, -30]
+        });
+
+        // Map Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            const mapContainer = document.getElementById('map');
+
+            // Basic default view (Seoul)
+            const defaultLat = 37.5665;
+            const defaultLng = 126.9780;
+
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        initMap(lat, lng);
+                    },
+                    (error) => {
+                        console.log("Location access denied or error. Using default.");
+                        initMap(defaultLat, defaultLng);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    }
+                );
+            } else {
+                initMap(defaultLat, defaultLng);
+            }
+
+            function initMap(lat, lng) {
+                var map = L.map('map').setView([lat, lng], 14);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
+                }).addTo(map);
+
+                // User Marker
+                L.marker([lat, lng]).addTo(map)
+                    .bindPopup('<b>📍 현재 위치</b>')
+                    .openPopup();
+
+                // Add more "popular" fake estate markers relative to current location
+                const popularEstates = [
+                    { lat: lat + 0.003, lng: lng + 0.003, name: '✨ [인기] 더샵 센트럴파크', rating: '4.8' },
+                    { lat: lat - 0.002, lng: lng - 0.002, name: '✨ [인기] 래미안 리더스원', rating: '4.9' },
+                    { lat: lat + 0.005, lng: lng - 0.004, name: '✨ [인기] 아크로 리버뷰', rating: '4.7' },
+                    { lat: lat - 0.004, lng: lng + 0.005, name: '자이 프레지던스', rating: '4.5' },
+                    { lat: lat + 0.001, lng: lng + 0.006, name: '롯데캐슬 골드', rating: '4.6' },
+                ];
+
+                popularEstates.forEach(est => {
+                    const popupContent = `
+                        <div style="text-align:center;">
+                            <b>${est.name}</b><br>
+                            ⭐ ${est.rating} / 5.0<br>
+                            <a href="#" style="color:#10b981; text-decoration:none; font-size:0.8rem;">리뷰 보기</a>
+                        </div>
+                    `;
+                    // Use default marker or custom if you have assets. Using default for reliability but with popup.
+                    L.marker([est.lat, est.lng]).addTo(map).bindPopup(popupContent);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

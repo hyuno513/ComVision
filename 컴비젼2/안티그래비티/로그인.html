@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - NeighborHood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style_landing.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+        <div class="login-header">
+            <a href="랜딩페이지.html" class="login-logo">
+                <i data-lucide="home"></i>
+                <span>NeighborHood</span>
+            </a>
+            <h2>다시 만나서 반가워요! 👋</h2>
+            <p>이웃들과 이야기를 나누려면 로그인하세요.</p>
+        </div>
+
+        <form class="login-form" action="랜딩페이지.html">
+            <div class="input-group">
+                <i data-lucide="user" class="input-icon"></i>
+                <input type="text" class="login-input" placeholder="아이디 또는 이메일" required>
+            </div>
+            <div class="input-group">
+                <i data-lucide="lock" class="input-icon"></i>
+                <input type="password" class="login-input" placeholder="비밀번호" required>
+            </div>
+
+            <button type="submit" class="login-btn">로그인</button>
+        </form>
+
+        <div class="login-footer">
+            계정이 없으신가요? <a href="#">회원가입하기</a>
+            <br><br>
+            <a href="랜딩페이지.html" style="color: rgba(255,255,255,0.5); font-weight: normal;">메인으로 돌아가기</a>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!--
+주석
+!tab
+
+
+html은 태그라는 괄호 <>를 사용해서 콘텐츠의 역할을 정의, 대부분은 시작 태그와 종료 태그가 한 쌍으로 움직임.
+구조: <태그명>내용물</태그명>
+
+h tab
+<h1> ~ <h6> : 보통 제목을 정할 때 사용. 숫자가 작을수록 글자가 크고 중요
+p tab
+<p> : 일반적인 텍스트 줄바꿈을 포함한 문단
+a tab
+<a> : 링크: 다른페이지로 이동할 때 사용(a태그 뿐만 아니라 각각의 태그에서도 고유한 속성들이 들어있음)
+img tab
+<img> : 이미지 사진을 넣을 때 사용
+ul tab
+<ul>, <li> : 목록을 나열할때 사용
+-->
+
+
+<!--
+1.
+Ces : 웹 사이트를 만들때 html이 뼈대라면 css는 뼈대에 입히는 옷 & 메이크업
+Ces의 기본 구조:
+선택자(Selector) : 스타일을 선택할 대상)) 예 : h1, .className, #idName
+속성(Property) : 변경하고 싶은 특징 )) 예 : color, font_size
+값(Value) : 설정하고 싶은 수치나 상태 )) 예: red,  20px
+
+2. CSS 적용방법 3가지
+    1. 외부 스타일 시트 : .css 파일을 만들어서 html의 head태그 안에 link로 연결
+    ~ 가장 권장되는 방식
+    2. 내부 스타일 시트: html 파일의 <style> 태그 안에 직접 작성
+
+3. CSS 파일 적용예시
+    1. link태그 속성 : rel="stylesheet" : 연결할 파일이 '스타일시트'라는 관계 필수 속성
+    2. href="파일경로" : CSS 파일이 있는 위치를 지정한다.
+    3. CSS가 css라는 폴더안에 있을 경우 : <link rel="stylesheet" href="css/style.css">
+
+4. 왜 외부파일로 연결하는가?
+    1. 재사용성: 하나의 CSS 파일을 여러 Html 페이지에서 동시에 불러와 작업이 가능
+    2. 유지보수에 강점 : 디자인을 바꿀 때 CSS 파일 하나만 수정하면 모든 페이지에 반영
+    3. 속도: 브라우저가 CSS파일을 캐시(저장)해두기 때문에, 페이지를 이동할 때마다 스타일을 다시 읽지 않아 로딩이 빨라진다.
+
+-->
+
+<!--
+JavaScript : 예) 웹사이트를 건물에 비유한다면 html: 건물의 구조(뼈대), Css는 건물의 인테리어(색상, 디자인)
+JavaScript: 건물의 설비(엘리베이터작동, 전등 스위치)
+
+주요 특정: 인터프리터 언어: 코드를 작성하면 브라우저가 실시간으로 해석해서 실행
+이벤트 중심: 사용자가 버튼을 클릭하거나 마우스를 움직이는 등의 사건(이벤트)에 반응하도록 설계
+높은 범용성: 브라우저 뿐만 아니라 서버(Node.js), 모바일 앱(React Native),
+
+자바스크립트는 <script>방식으로 사용. CSS파일처럼 파일과 html을 따로
+DOM(Document Object Model) : 자바스크립트는 HTML 문서 전체를 하나의 트리(Tree)구조 객체로 인식
+이걸 DOM이라고 부름. 자브스크립트는 DOM지도를 보고 버튼을 찾음.
+
+-->
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        p {
+            color: blue;
+            font-size: 30px;
+        }
+    </style>
+    <link rel="stylesheet" href="../2026-1-29/CSS/1.%20Css.css">
+
+    <title>jemok</title>
+</head>
+<body>
+<h1 id="title">중요한 내용1</h1>
+<button onclick="changeText()">클릭해 보세요</button>
+<h2>중요한 내용2</h2>
+<h3>중요한 내용3</h3>
+<p>단락</p>
+<p>안녕하세요</p>
+<a href="https://www.naver.com/" target="_blank">네이버로가는태그입니다.</a>
+<img src="../../2026-1-27/input/피카츄.jpg" alt="./">
+<ul>
+    <li>안녕하세요</li>
+    <li>반갑습니다</li>
+</ul>
+<script>
+    function changeText() {
+            // 1. HTML에서 id가 'title'인 요소를 찾는 과정
+            const titleElement = document.getElementById('title');
+
+            // 2. 그 요소 내용을 변경
+            titleElement.innerText = "자바스크립트로 바꿨습니다."
+
+            // 3. 스타일 바꾸기
+            titleElement.style.color = 'blue';
+            alert('자바스크립트버튼클릭')
+
+    }
+
+</script>
+
+
+<script src=""></script>
+
+
+
+</body>
+</html>
